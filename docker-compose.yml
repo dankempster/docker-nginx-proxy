@@ -1,0 +1,32 @@
+version: "2"
+
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/ect/nginx/nginx.conf
+      - ./nginx/temp:/etc/nginx/conf.d
+      - ./nginx/certs:/etc/nginx/certs
+    networks:
+      - net
+
+  dockergen:
+    image: jwilder/docker-gen
+    container_name: dockergen
+    restart: unless-stopped
+    volumes_from:
+      - nginx
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./docker-gen/templates/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl
+    command: -notify-sighup nginx -watch /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge

@@ -1,6 +1,6 @@
 # Docker Nginx Reverse Proxy
 
-Using [jwilder/docker-gen](https://hub.docker.com/r/jwilder/docker-gen/), based on the examples in [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy), this project provides an automated Nginx Reverse Proxy for you contaniers.
+Using [jwilder/docker-gen](https://hub.docker.com/r/jwilder/docker-gen/), based on the examples in [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy), this project provides an automated Nginx Reverse Proxy for your containers.
 
 See [Automated Nginx Reverse Proxy for Docker](http://jasonwilder.com/blog/2014/03/25/automated-nginx-reverse-proxy-for-docker/) for why you might want to use this.
 
